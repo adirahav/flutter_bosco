@@ -3,8 +3,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'common/colors.dart';
 import 'common/app_bar.dart';
+import 'common/drawer.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
+  TabController _tabController;
+
+  @override
+  void initState() {
+    _tabController = TabController(length: 3, vsync: this);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     var sectionPadding = const EdgeInsets.only(
@@ -13,15 +27,18 @@ class Home extends StatelessWidget {
         bottom: CustomDimens.Padding);
 
     return Scaffold(
+      drawer: drawer(),
       appBar: CustomAppBar(
-          showMenu: true,
-          childName: "Adi",
-          showChildAvatar: true,
-          childAvatar: "https://i.imgur.com/BoN9kdC.png"),
+        showMenu: true,
+        childName: "Title",
+        showChildAvatar: true,
+        childAvatar: "https://i.imgur.com/BoN9kdC.png",
+        tabController: this._tabController,
+      ),
       body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
-          color: CustomColors.Background,
+          color: CustomColors.PinkBackgroung,
           child: Column(
             children: [
               ChildAvatar(),
@@ -105,10 +122,45 @@ class Section extends StatelessWidget {
         flex: 1,
         child: Container(
           width: double.infinity,
-          height: 100,
-          color: Colors.blue,
-          child: Row(
-            children: [Text(this.title)],
+          height: 120,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          ),
+          child: Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0, top: 8.0),
+                child: Row(
+                  children: [
+                    Text(
+                      this.title,
+                      style: TextStyle(
+                          fontSize: CustomDimens.NormalFontSize - 2,
+                          color: CustomColors.AppBarBackground,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Image(image: AssetImage("images/WhatsappIcon.png"), width: 20.0, height: 20.0,),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Image(image: AssetImage("images/InstagramIcon.png"), width: 20.0, height: 20.0,),
+                    ),
+                  ],
+                ),
+              ),
+              Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text("0 | 0", style: TextStyle(fontSize: CustomDimens.BigFontSize-2, color: Colors.grey),),
+                    Text("0 | 0", style: TextStyle(fontSize: CustomDimens.BigFontSize-2, color: Colors.grey),),
+                  ],
+                )
+              )
+            ],
           ),
         ));
   }
@@ -127,13 +179,42 @@ class ChildAvatar extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            height: 150,
-            color: Colors.green,
+            height: 200,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: NetworkImage("https://i.imgur.com/BoN9kdC.png"))),
           ),
           Container(
             width: double.infinity,
-            height: 50,
+            height: 80,
             color: CustomColors.AlertBackground,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Child’s device unavailable",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: CustomDimens.NormalFontSize + 2),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.cancel, color: Colors.white,),
+                      ),
+                    ],
+                  ),
+                  Text("Since Monday, 10 January",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: CustomDimens.SmallFontSize + 5))
+                ],
+              ),
+            ),
           ),
         ],
       ),
