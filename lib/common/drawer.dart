@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'colors.dart';
 import 'dimens.dart';
 
-class drawer extends StatelessWidget {
+class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(

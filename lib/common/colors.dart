@@ -11,4 +11,6 @@ class CustomColors {
   static const TabsBackground = Color(0xFF963499);
 
   static const AlertBackground = Color(0xFFc81b49);
+
+  static const Title = Color(0xFF6b216e);
 }
