@@ -1,3 +1,5 @@
+import 'package:bosco/login_page.dart';
+import 'package:bosco/signUp_page.dart';
 import 'package:flutter/material.dart';
 import 'colors.dart';
 import 'dimens.dart';
@@ -33,22 +35,37 @@ class CustomDrawer extends StatelessWidget {
               ListTile(
                 title: Center(
                   child: Text(
-                    "#1",
+                    "התחברות",
                     style: TextStyle(fontSize: CustomDimens.BigFontSize),
                   ),
                 ),
-                onTap: () {},
-                subtitle: Center(child: Text("#1 subtitle")),
+                subtitle: Center(child: Text("דף התחברות")),
+                onTap: () {
+                  Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) {
+                return loginPage();
+              }),
+            );
+                },
               ),
+              SizedBox(height: 10.0,),
               ListTile(
                 title: Center(
                   child: Text(
-                    "#2",
+                    "הרשמה",
                     style: TextStyle(fontSize: CustomDimens.BigFontSize),
                   ),
                 ),
-                onTap: () {},
-                subtitle: Center(child: Text("#2 subtitle")),
+                subtitle: Center(child: Text("דף הרשמה")),
+                onTap: () {
+                  Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) {
+                return signUpPage();
+              }),
+            );
+                },
               ),
             ],
           ),
