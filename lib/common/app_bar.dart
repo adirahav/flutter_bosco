@@ -25,33 +25,36 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return this.showMenu
-        ? AppBar(
+    return AppBar(
       centerTitle: true,
-            backgroundColor: CustomColors.AppBarBackground,
-            // leading: IconButton(
-            //   onPressed: () {},
-            //   icon: Icon(
-            //     Icons.menu,
-            //   ),
-            // ),
-            title: Text(this.childName, style: TextStyle(fontSize: CustomDimens.BigFontSize),),
-            actions: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(right: 10.0),
-                child: this.showChildAvatar
-                    ? Container(
-                        width: 35.0,
-                        height: 35.0,
-                        decoration: new BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: new DecorationImage(
-                                fit: BoxFit.fill,
-                                image: new NetworkImage(this.childAvatar))))
-                    : Container(),
-              ),
-            ],
-            bottom: PreferredSize(
+      backgroundColor: CustomColors.AppBarBackground,
+      // leading: IconButton(
+      //   onPressed: () {},
+      //   icon: Icon(
+      //     Icons.menu,
+      //   ),
+      // ),
+      title: Text(
+        this.childName,
+        style: TextStyle(fontSize: CustomDimens.BigFontSize),
+      ),
+      actions: <Widget>[
+        Padding(
+          padding: EdgeInsets.only(right: 10.0),
+          child: this.showChildAvatar
+              ? Container(
+                  width: 35.0,
+                  height: 35.0,
+                  decoration: new BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: new DecorationImage(
+                          fit: BoxFit.fill,
+                          image: new NetworkImage(this.childAvatar))))
+              : Container(),
+        ),
+      ],
+      bottom: this.tabController != null
+          ? PreferredSize(
               preferredSize: Size.fromHeight(.0),
               // child: Container(
               //   color: CustomColors.TabsBackground,
@@ -67,28 +70,31 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     tabs: [
                       Tab(
                         icon: Text(
-                      "Dashboard",
-                      style: TextStyle(fontSize: CustomDimens.NormalFontSize),
+                          "Dashboard",
+                          style:
+                              TextStyle(fontSize: CustomDimens.NormalFontSize),
                         ),
                       ),
                       Tab(
                         icon: Text(
                           "Daily report",
-                          style: TextStyle(fontSize: CustomDimens.NormalFontSize),
+                          style:
+                              TextStyle(fontSize: CustomDimens.NormalFontSize),
                         ),
                       ),
                       Tab(
                         icon: Text(
                           "Notifications",
-                          style: TextStyle(fontSize: CustomDimens.NormalFontSize),
+                          style:
+                              TextStyle(fontSize: CustomDimens.NormalFontSize),
                         ),
                       ),
                     ],
                   ),
                 ),
               ),
-            ),
-          )
-        : null;
+            )
+          : null,
+    );
   }
 }

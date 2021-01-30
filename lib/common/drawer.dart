@@ -1,3 +1,5 @@
+import 'package:bosco/common/routes.dart';
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'colors.dart';
 import 'dimens.dart';
@@ -30,30 +32,52 @@ class CustomDrawer extends StatelessWidget {
                       BoxDecoration(color: CustomColors.AppBarBackground),
                 ),
               ),
-              ListTile(
-                title: Center(
-                  child: Text(
-                    "#1",
-                    style: TextStyle(fontSize: CustomDimens.BigFontSize),
-                  ),
-                ),
-                onTap: () {},
-                subtitle: Center(child: Text("#1 subtitle")),
-              ),
-              ListTile(
-                title: Center(
-                  child: Text(
-                    "#2",
-                    style: TextStyle(fontSize: CustomDimens.BigFontSize),
-                  ),
-                ),
-                onTap: () {},
-                subtitle: Center(child: Text("#2 subtitle")),
-              ),
+              DrawerItem(
+                  icon: Icons.people_outline,
+                  title: "Family setup",
+                  navigateTo: Navigation.familySetup),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+// ignore: must_be_immutable
+class DrawerItem extends StatelessWidget {
+  IconData icon;
+  String title;
+  String navigateTo;
+
+  DrawerItem({
+    this.icon,
+    this.title,
+    this.navigateTo,
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Icon(
+        this.icon,
+        color: CustomColors.DrawerIcon,
+      ),
+      title: Text(
+        this.title,
+        style: TextStyle(
+            fontSize: CustomDimens.NormalFontSize,
+            color: CustomColors.DrawerText),
+      ),
+      trailing: Icon(
+        Icons.arrow_forward_ios,
+        color: CustomColors.DrawerArrow,
+      ),
+      onTap: () {
+        Navigation.router.navigateTo(context, Navigation.familySetup,
+            transition: TransitionType.cupertino);
+      },
     );
   }
 }
