@@ -1,4 +1,6 @@
 import 'package:bosco/common/dimens.dart';
+import 'package:bosco/routes.dart';
+import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'common/colors.dart';
@@ -61,7 +63,8 @@ class _signUpPageState extends State<signUpPage> {
                   containeIcon: false,
                   validators: [
                     FormBuilderValidators.required(context),
-                    FormBuilderValidators.email(context)
+                    FormBuilderValidators.email(context),
+                    // FormBuilderValidators.equal(context, Email)
                   ],
                 ),
                 SizedBox(height: 20),
@@ -85,7 +88,12 @@ class _signUpPageState extends State<signUpPage> {
                           fontWeight: FontWeight.bold,
                           color: Colors.white),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      if(_fbKey.currentState.saveAndValidate()) {
+                        print(_fbKey.currentState.value);
+                        Navigation.router.navigateTo(context, Navigation.home, replace: true, transition: TransitionType.fadeIn);
+                      }
+                    },
                   ),
                 ),
                 Expanded(
@@ -107,7 +115,10 @@ class _signUpPageState extends State<signUpPage> {
                             ),
                             textDirection: TextDirection.rtl,
                           ),
-                          onTap: () {},
+                          onTap: () {
+                            Navigation.router.navigateTo(context, Navigation.loginPageName, replace: true, transition: TransitionType.inFromBottom);
+                            
+                          },
                         ),
                         Text(
                           "יש לך חשבון? ",

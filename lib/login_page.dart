@@ -1,9 +1,10 @@
 import 'package:bosco/common/dimens.dart';
+import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'common/colors.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-
+import 'package:bosco/routes.dart';
 import 'common/form_text_field.dart';
 
 class loginPage extends StatefulWidget {
@@ -76,7 +77,9 @@ class _loginPageState extends State<loginPage> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      Navigation.router.navigateTo(context, Navigation.home, replace: true, transition: TransitionType.fadeIn);
+                    },
                   ),
                 ),
                 SizedBox(height: 120.0),
@@ -92,7 +95,12 @@ class _loginPageState extends State<loginPage> {
                           fontWeight: FontWeight.bold,
                           color: Colors.white),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      if(_fbKey.currentState.saveAndValidate()) {
+                        print(_fbKey.currentState.value);
+                        Navigation.router.navigateTo(context, Navigation.home, replace: true, transition: TransitionType.fadeIn);
+                      }
+                    },
                   ),
                 ),
                 Expanded(
@@ -114,7 +122,9 @@ class _loginPageState extends State<loginPage> {
                             ),
                             textDirection: TextDirection.rtl,
                           ),
-                          onTap: () {},
+                          onTap: () {
+                            Navigation.router.navigateTo(context, Navigation.signUpPageName, replace: true, transition: TransitionType.inFromBottom);
+                          },
                         ),
                         Text(
                           "אין לך חשבון? ",

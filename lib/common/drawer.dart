@@ -1,5 +1,5 @@
-import 'package:bosco/login_page.dart';
-import 'package:bosco/signUp_page.dart';
+import 'package:bosco/routes.dart';
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'colors.dart';
 import 'dimens.dart';
@@ -41,12 +41,7 @@ class CustomDrawer extends StatelessWidget {
                 ),
                 subtitle: Center(child: Text("דף התחברות")),
                 onTap: () {
-                  Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) {
-                return loginPage();
-              }),
-            );
+                  Navigation.router.navigateTo(context, Navigation.loginPageName, transition: TransitionType.inFromLeft);
                 },
               ),
               SizedBox(height: 10.0,),
@@ -59,12 +54,7 @@ class CustomDrawer extends StatelessWidget {
                 ),
                 subtitle: Center(child: Text("דף הרשמה")),
                 onTap: () {
-                  Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) {
-                return signUpPage();
-              }),
-            );
+                  Navigation.router.navigateTo(context, Navigation.signUpPageName, transition: TransitionType.inFromLeft);
                 },
               ),
             ],

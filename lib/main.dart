@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'home.dart';
+import 'package:bosco/routes.dart';
 
 void main() {
+  defineRoutes(Navigation.router);
   runApp(MyApp());
 }
 
