@@ -1,7 +1,6 @@
 import 'package:bosco/presentation/pages/home.dart';
 import 'package:bosco/presentation/pages/login_page.dart';
-import 'package:bosco/presentation/pages/signUp_page.dart';
-
+import 'package:bosco/presentation/pages/sign_up_page.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 
