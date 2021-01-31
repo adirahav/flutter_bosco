@@ -1,10 +1,10 @@
-import 'package:bosco/common/dimens.dart';
+import 'package:bosco/core/constants/colors.dart';
+import 'package:bosco/core/constants/dimens.dart';
+import 'package:bosco/core/constants/enums.dart';
+import 'package:bosco/presentation/widgets/app_bar.dart';
+import 'package:bosco/presentation/widgets/drawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'common/colors.dart';
-import 'common/app_bar.dart';
-import 'common/drawer.dart';
-import 'common/enums.dart';
 
 class Home extends StatefulWidget {
   @override

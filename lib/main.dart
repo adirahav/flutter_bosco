@@ -1,6 +1,6 @@
+import 'package:bosco/presentation/pages/home.dart';
 import 'package:flutter/material.dart';
-import 'home.dart';
-import 'package:bosco/routes.dart';
+import 'core/constants/routes.dart';
 
 void main() {
   defineRoutes(Navigation.router);

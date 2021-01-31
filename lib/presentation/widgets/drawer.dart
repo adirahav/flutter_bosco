@@ -1,8 +1,8 @@
-import 'package:bosco/routes.dart';
+import 'package:bosco/core/constants/colors.dart';
+import 'package:bosco/core/constants/dimens.dart';
+import 'package:bosco/core/constants/routes.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
-import 'colors.dart';
-import 'dimens.dart';
 
 class CustomDrawer extends StatelessWidget {
   @override

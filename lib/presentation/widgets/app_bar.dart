@@ -1,7 +1,7 @@
+import 'package:bosco/core/constants/colors.dart';
+import 'package:bosco/core/constants/dimens.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'dimens.dart';
-import 'colors.dart';
 
 // ignore: must_be_immutable
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {

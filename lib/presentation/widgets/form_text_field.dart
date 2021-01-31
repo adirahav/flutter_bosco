@@ -1,7 +1,6 @@
+import 'package:bosco/core/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-
-import 'colors.dart';
 
 class FormTextField extends StatefulWidget {
   final String name;
@@ -10,6 +9,7 @@ class FormTextField extends StatefulWidget {
   final bool containeIcon;
   final IconData icon;
   final List<String Function(String)> validators;
+  final TextInputType textInputType;
 
   FormTextField({
     Key key,
@@ -18,7 +18,7 @@ class FormTextField extends StatefulWidget {
     @required this.containeIcon,
     this.icon,
     this.validators,
-    @required this.initialTextHide
+    @required this.initialTextHide, this.textInputType
   }) : super(key: key);
 
   @override
@@ -32,6 +32,7 @@ class _FormTextFieldState extends State<FormTextField> {
     return FormBuilderTextField(
       name: widget.name,
       textAlign: TextAlign.right,
+      keyboardType: widget.textInputType,
       style: TextStyle(fontSize: 20),
       decoration: InputDecoration(
         filled: true,

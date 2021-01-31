@@ -1,19 +1,18 @@
-import 'package:bosco/common/dimens.dart';
-import 'package:bosco/routes.dart';
+import 'package:bosco/core/constants/colors.dart';
+import 'package:bosco/core/constants/dimens.dart';
+import 'package:bosco/core/constants/routes.dart';
+import 'package:bosco/presentation/widgets/form_text_field.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'common/colors.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'common/form_text_field.dart';
 
-
-class signUpPage extends StatefulWidget {
+class loginPage extends StatefulWidget {
   @override
-  _signUpPageState createState() => _signUpPageState();
+  _loginPageState createState() => _loginPageState();
 }
 
-class _signUpPageState extends State<signUpPage> {
+class _loginPageState extends State<loginPage> {
   final _fbKey = GlobalKey<FormBuilderState>();
 
   @override
@@ -26,7 +25,7 @@ class _signUpPageState extends State<signUpPage> {
         elevation: 0.0,
         title: Padding(
           padding: const EdgeInsets.only(top: 20.0),
-          child: Text("הרשם",
+          child: Text("התחבר",
               style: TextStyle(
                   fontSize: CustomDimens.BigFontSize + 10,
                   color: CustomColors.Title,
@@ -48,6 +47,7 @@ class _signUpPageState extends State<signUpPage> {
                 FormTextField(
                   name: 'Email',
                   hintText: 'דוא"ל',
+                  textInputType: TextInputType.emailAddress,
                   initialTextHide: false,
                   containeIcon: false,
                   validators: [
@@ -57,23 +57,32 @@ class _signUpPageState extends State<signUpPage> {
                 ),
                 SizedBox(height: 20),
                 FormTextField(
-                  name: 'confirmEmail',
-                  hintText: 'הקלד דוא"ל שנית',
-                  initialTextHide: false,
-                  containeIcon: false,
-                  validators: [
-                    FormBuilderValidators.required(context),
-                    FormBuilderValidators.email(context),
-                    // FormBuilderValidators.equal(context, Email)
-                  ],
-                ),
-                SizedBox(height: 20),
-                FormTextField(
                   name: 'Password',
                   hintText: 'סיסמה',
                   initialTextHide: true,
                   containeIcon: true,
-                  validators: [FormBuilderValidators.required(context), FormBuilderValidators.minLength(context, 8)],
+                  validators: [FormBuilderValidators.required(context)],
+                ),
+                SizedBox(height: 10.0),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    child: Text(
+                      "שכחתי סיסמה",
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        color: CustomColors.Title,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigation.router.navigateTo(context, Navigation.home,
+                          replace: true, transition: TransitionType.fadeIn);
+                    },
+                  ),
                 ),
                 SizedBox(height: 120.0),
                 Container(
@@ -82,16 +91,17 @@ class _signUpPageState extends State<signUpPage> {
                   child: RaisedButton(
                     color: Colors.lightBlue[300],
                     child: Text(
-                      "הרשם",
+                      "התחבר",
                       style: TextStyle(
                           fontSize: 40.0,
                           fontWeight: FontWeight.bold,
                           color: Colors.white),
                     ),
                     onPressed: () {
-                      if(_fbKey.currentState.saveAndValidate()) {
+                      if (_fbKey.currentState.saveAndValidate()) {
                         print(_fbKey.currentState.value);
-                        Navigation.router.navigateTo(context, Navigation.home, replace: true, transition: TransitionType.fadeIn);
+                        Navigation.router.navigateTo(context, Navigation.home,
+                            replace: true, transition: TransitionType.fadeIn);
                       }
                     },
                   ),
@@ -106,7 +116,7 @@ class _signUpPageState extends State<signUpPage> {
                           splashColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           child: Text(
-                            "התחבר",
+                            "הרשם",
                             textAlign: TextAlign.right,
                             style: TextStyle(
                               fontSize: 20.0,
@@ -116,12 +126,14 @@ class _signUpPageState extends State<signUpPage> {
                             textDirection: TextDirection.rtl,
                           ),
                           onTap: () {
-                            Navigation.router.navigateTo(context, Navigation.loginPageName, replace: true, transition: TransitionType.inFromBottom);
-                            
+                            Navigation.router.navigateTo(
+                                context, Navigation.signUpPageName,
+                                replace: true,
+                                transition: TransitionType.inFromLeft);
                           },
                         ),
                         Text(
-                          "יש לך חשבון? ",
+                          "אין לך חשבון? ",
                           textAlign: TextAlign.right,
                           style: TextStyle(
                               fontSize: 20.0,
