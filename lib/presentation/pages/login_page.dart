@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 class loginPage extends StatefulWidget {
+
   @override
   _loginPageState createState() => _loginPageState();
 }
@@ -51,7 +52,7 @@ class _loginPageState extends State<loginPage> {
                   initialTextHide: false,
                   containeIcon: false,
                   validators: [
-                    FormBuilderValidators.required(context),
+                    FormBuilderValidators.required(context, errorText: "!שדה חובה"),
                     FormBuilderValidators.email(context)
                   ],
                 ),
@@ -61,7 +62,7 @@ class _loginPageState extends State<loginPage> {
                   hintText: 'סיסמה',
                   initialTextHide: true,
                   containeIcon: true,
-                  validators: [FormBuilderValidators.required(context)],
+                  validators: [FormBuilderValidators.required(context, errorText: "!שדה חובה")],
                 ),
                 SizedBox(height: 10.0),
                 Align(

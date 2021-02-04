@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 class signUpPage extends StatefulWidget {
+  
   @override
   _signUpPageState createState() => _signUpPageState();
 }
@@ -51,7 +52,7 @@ class _signUpPageState extends State<signUpPage> {
                   initialTextHide: false,
                   containeIcon: false,
                   validators: [
-                    FormBuilderValidators.required(context),
+                    FormBuilderValidators.required(context, errorText: "!שדה חובה"),
                     FormBuilderValidators.email(context)
                   ],
                 ),
@@ -63,9 +64,19 @@ class _signUpPageState extends State<signUpPage> {
                   initialTextHide: false,
                   containeIcon: false,
                   validators: [
-                    FormBuilderValidators.required(context),
-                    FormBuilderValidators.email(context),
-                    // FormBuilderValidators.equal(context, Email)
+                    FormBuilderValidators.required(context, errorText: "!שדה חובה"),
+                    FormBuilderValidators.email(context, errorText: "!שדה חייב להיות אימייל"),
+                    // FormBuilderValidators.equal(context, FormBuilder.of(context) == null ? null : FormBuilder.of(context).value['Email'])
+                    (value) {
+                      if (_fbKey.currentState == null) {
+                        return '!הכנס אימות מייל';
+                      } else if (_fbKey.currentState.value['Email'] !=
+                          _fbKey.currentState.value['confirmEmail']) {
+                        return '!האימיילים לא זהים';
+                      } else {
+                        return null;
+                      }
+                    },
                   ],
                 ),
                 SizedBox(height: 20),
@@ -75,8 +86,8 @@ class _signUpPageState extends State<signUpPage> {
                   initialTextHide: true,
                   containeIcon: true,
                   validators: [
-                    FormBuilderValidators.required(context),
-                    FormBuilderValidators.minLength(context, 8)
+                    FormBuilderValidators.required(context, errorText: "!שדה חובה"),
+                    FormBuilderValidators.minLength(context, 8, errorText: "!הסיסמא חייבת  להיות באורך של לפחות 8 תווים")
                   ],
                 ),
                 SizedBox(height: 120.0),
