@@ -1,8 +1,9 @@
 import 'package:bosco/add_child.dart';
-import 'package:bosco/family_setup.dart';
 import 'package:bosco/home.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+
+import 'app/features/family_setup/presentation/pages/family_setup_page.dart';
 
 class Navigation {
   static final router = FluroRouter();
@@ -18,7 +19,7 @@ var homeHandler =
 
 var familySetupHandler =
     Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-  return FamilySetup();
+  return FamilySetupPage();
 });
 
 var addChildHandler =

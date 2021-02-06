@@ -1,10 +1,16 @@
-import 'package:bosco/common/routes.dart';
+import 'package:bosco/routes.dart';
 import 'package:flutter/material.dart';
-import 'home.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:bosco/core/service_locator.dart' as sl;
 
-void main() {
+import 'app/features/family_setup/presentation/pages/family_setup_page.dart';
+
+void main() async {
   defineRoutes(Navigation.router);
+  //runApp(MyApp());
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await sl.init();
   runApp(MyApp());
 }
 
@@ -25,7 +31,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: Home(), //FormSecondPage(),
+        home: FamilySetupPage(), //Home(), //FormSecondPage(),
       ),
     );
   }

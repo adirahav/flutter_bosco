@@ -1,13 +1,9 @@
+import 'package:bosco/core/constants/colors.dart';
+import 'package:bosco/core/constants/drawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'common/app_bar.dart';
-import 'common/colors.dart';
-import 'common/drawer.dart';
-//import 'package:flutter_form_builder/flutter_form_builder.dart';
-//import 'package:websafe_svg/websafe_svg.dart';
-
-//import 'common/routes.dart';
+import 'package:bosco/app/cross_widgets/app_bar/app_bar.dart';
 import 'form/custom_raised_button.dart';
 import 'form/custom_text_field.dart';
 import 'form/custom_input_date_picker.dart';
